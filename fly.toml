@@ -7,7 +7,7 @@ app = 'flydeploydhkdtld37'
 primary_region = 'nrt'
 
 [build]
-  image = "nginx"
+  image = "dhkdtld37/nginx-my-html:0.2.0"
 
 [http_service]
   internal_port = 80
