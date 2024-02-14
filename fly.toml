@@ -7,10 +7,10 @@ app = 'blogdeploydhkddltd37'
 primary_region = 'nrt'
 
 [build]
-  image = "dhkdtld37/push-docker-hub:0.4.0"
+  image = "dhkdtld37/push-docker-hub:0.4.3"
 
 [http_service]
-  internal_port = 8080
+  internal_port = 80
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
