@@ -18,7 +18,10 @@ https://github.com/beyond-sw-camp/be01-101/issues/27
 - [x] push-docker-hub
 
 ## v0.4.1
-- [ ] deploy-fly.io
+- [x] deploy-fly.io
+
+## v0.4.2
+- [x] 재시도 및 fly.toml 포트 수정
 
 -- -- --
 
@@ -27,9 +30,9 @@ https://github.com/beyond-sw-camp/be01-101/issues/27
 #### 브랜치 분리
 
 ```bash
-$ git branch 0.4.0/push-docker-hub
+$ git branch 0.4.2/push-docker-hub
 
-$ git checkout 0.4.0/push-docker-hub
+$ git checkout 0.4.2/push-docker-hub
 ```
 
 #### 도커 확인
@@ -44,26 +47,25 @@ $ sudo docker imgaes
 ```bash
 $ sudo docker run --name BlogDockerHub -p 9055:80 -v /home/dhkdtld37/code/dhkdtld37.github.io:/usr/share/nginx/html -d nginx
 
-$ sudo docker commit BlogDockerHub blogdh
+~/code/dhkdtld37.github.io에서 블로그 파일 복사
+$ sudo docker cp . test:/usr/share/nginx/html/
 
-$ sudo docker tag blogdh dhkdtld37/push-docker-hub:0.4.0
+$ sudo docker commit dhkdtld37/push-docker-hub:0.4.3
 
-$ sudo docker push dhkdtld37/push-docker-hub:0.4.0
+($ sudo docker tag blogdh dhkdtld37/push-docker-hub:0.4.0) - 0.4.2 버전에선 실행 하지 않음
 
-$ sudo docker pull dhkdtld37/push-docker-hub:0.4.0
+$ sudo docker push dhkdtld37/push-docker-hub:0.4.3
+
+$ sudo docker pull dhkdtld37/push-docker-hub:0.4.3
 ```
+## 테스트 로컬 실행
+![image](https://github.com/dhkdtld37/docker-nginx/assets/149128094/47865ac6-0ca1-4f1d-9b1e-75e94e6e3dfb)
+
+
 
 #### 깃허브 PR 이후 Merge
 
 ### Deploy docker hub image to fly.io
-
-#### 브랜치 분리
-
-```bash
-$ git branch 0.4.1/deploy-fly.io
-
-$ git checkout 0.4.1/deploy-fly.io
-```
 
 #### Fly.io 실행
 
@@ -103,13 +105,19 @@ $ vi fly.toml
 ```toml
 [build]
   image = "dhkdtld37/push-docker-hub:0.4.0"
-```
 
+[http_service]
+  internal_port = 80
+~
+```
 
 #### 배포
 
 ```bash
 $ flyctl deploy
 ```
+
+![image](https://github.com/dhkdtld37/docker-nginx/assets/149128094/391b371f-f0ad-4186-b2ef-c99f7bc7ebcf)
+
 
 #### 깃허브 PR 이후 Merge
