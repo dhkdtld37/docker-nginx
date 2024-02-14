@@ -20,6 +20,8 @@ https://github.com/beyond-sw-camp/be01-101/issues/27
 ## v0.4.1
 - [ ] deploy-fly.io
 
+-- -- --
+
 ### Blog to docker HUB
 
 #### 브랜치 분리
@@ -52,8 +54,6 @@ $ sudo docker pull dhkdtld37/push-docker-hub:0.4.0
 ```
 
 #### 깃허브 PR 이후 Merge
-
--- -- --
 
 ### Deploy docker hub image to fly.io
 
