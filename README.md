@@ -15,6 +15,9 @@ https://github.com/beyond-sw-camp/be01-101/issues/27
 
 
 ### v0.4.0
-- [ ] push-docker-hub
+- [x] push-docker-hub
+
+### v0.4.1
+- [ ] deploy-fly.io
 
 
